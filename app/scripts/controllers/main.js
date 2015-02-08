@@ -8,7 +8,7 @@
  * Controller of the tapTempoMachineApp
  */
 angular.module('tapTempoMachineApp')
-  .controller('MainCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+  .controller('MainCtrl', ['$scope', '$timeout', 'tapTempo', function ($scope, $timeout, tapTempo) {
 
     $scope.bpm = 0;
 
@@ -24,22 +24,11 @@ angular.module('tapTempoMachineApp')
       });
     });
 
-    var source = $scope.$eventToObservable('tap')
-            .timeInterval()
-            .skip(1)
-            .pluck('interval')
-            .where(function (i) {
-              return i <= 10000;
-            });
+    var source = $scope.$eventToObservable('tap');
 
-    source.windowWithCount(8, 1)
-    .merge(source.windowWithCount(4, 1).take(7))
-    .selectMany(function (x) {
-      return x.average();
-    })
-    .map(function (duration) {
-      return Math.round(60000 / duration);
-    })
+    tapTempo.add(source);
+
+    tapTempo.bpmSource()
     .safeApply($scope, function (x) {
       $scope.bpm = x;
     })
