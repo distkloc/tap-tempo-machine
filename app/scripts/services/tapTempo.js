@@ -2,13 +2,14 @@
 
 angular
   .module('tapTempoMachineApp')
-  .factory('tapTempo', ['rx', function (rx) {
+  .factory('tapTempo', ['rx', '$rootScope', function (rx, $rootScope) {
 
     var observables = [];
 
     return {
       add: function (observable) {
         observables.push(observable);
+        $rootScope.$broadcast('tapTempo.update');
       },
 
       bpmSource: function () {

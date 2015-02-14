@@ -24,14 +24,11 @@ angular.module('tapTempoMachineApp')
       });
     });
 
-    var source = $scope.$eventToObservable('tap');
-
-    tapTempo.add(source);
-
-    tapTempo.bpmSource()
-    .safeApply($scope, function (x) {
-      $scope.bpm = x;
-    })
-    .subscribe();
-      
+    $scope.$on('tapTempo.update', function() {
+      tapTempo.bpmSource()
+      .safeApply($scope, function (x) {
+        $scope.bpm = x;
+      })
+      .subscribe();
+    });
   }]);
