@@ -60,7 +60,7 @@ body {
   border-bottom: 1px solid #e5e5e5;
 
   .bpm {
-    font-size: ceil($font-size-base * 18);
+    font-size: ceil($font-size-base * 10);
   }
 
   .btn {
@@ -107,8 +107,13 @@ body {
   .header {
     margin-bottom: 30px;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
+
   .jumbotron {
+    /* Remove the bottom border on the jumbotron for visual effect */
     border-bottom: 0;
+
+    .bpm {
+      font-size: ceil($font-size-base * 18);
+    }
   }
 }
