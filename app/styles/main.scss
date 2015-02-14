@@ -68,24 +68,24 @@ body {
     padding: 14px 24px;
   }
 
-  .flash {
+  .clicked {
     color: rgb(26, 188, 156);
   }
 
-  .bg-flash {
+  .downed {
     background-color: rgb(26, 188, 156);
   }
 
-  .flash-remove, .bg-flash-remove {
+  .clicked-remove, .downed-remove {
     -webkit-transition: 0.5s linear all;
     transition: 0.5s linear all;
   }
   
-  .flash-remove-active {
+  .clicked-remove-active {
     color: $text-color;
   }
 
-  .bg-flash-remove-active {
+  .downed-remove-active {
     background-color: $kbd-bg;
   }
 }
