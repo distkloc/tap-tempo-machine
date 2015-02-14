@@ -12,7 +12,8 @@
     "angular-sanitize": "^1.3.0",
     "angular-touch": "^1.3.0",
     "angular-rx": "~0.0.12",
-    "animate-sass": "~0.6.2"
+    "animate-sass": "~0.6.2",
+    "rxjs-jquery": "~1.1.7"
   },
   "devDependencies": {
     "angular-mocks": "~1.3.0",
