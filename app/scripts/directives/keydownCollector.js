@@ -1,9 +1,9 @@
 (function () {
   'use strict';
 
-  function addKeydownEventObservable(tapTempo, $timeout) {
-    return function (scope, element) {
-      var source = element.keydownAsObservable()
+  function addKeydownEventObservable(tapTempo, $document, $timeout) {
+    return function (scope) {
+      var source = $document.keydownAsObservable()
         .where(function (e) {
           return e.keyCode === 74; //J key
         });
@@ -29,6 +29,6 @@
     .module('tapTempoMachineApp')
     .directive('keydownCollector', addKeydownEventObservable);
 
-  addKeydownEventObservable.$inject = ['tapTempo', '$timeout'];
+  addKeydownEventObservable.$inject = ['tapTempo', '$document', '$timeout'];
 
 })();
