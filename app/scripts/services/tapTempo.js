@@ -7,13 +7,30 @@ angular
     var observables = [];
 
     return {
-      add: function (observable) {
-        observables.push(observable);
+      add: function (key, observable) {
+        var kvp = {};
+        kvp.name = key;
+        kvp.observable = observable;
+
+        observables.push(kvp);
         $rootScope.$broadcast('tapTempo.update');
       },
 
+      getSourceBy: function (name) {
+        return observables.filter(function (kvp) {
+          return kvp.name === name;
+        })
+        .map(function (kvp) {
+          return kvp.observable;
+        })[0];
+      },
+
       bpmSource: function () {
-        var source = rx.Observable.merge(observables)
+        var sources = observables.map(function (kvp) {
+          return kvp.observable;
+        });
+
+        var source = rx.Observable.merge(sources)
                     .timeInterval()
                     .skip(1)
                     .pluck('interval')
