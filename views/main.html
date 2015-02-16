@@ -1,1 +1,1 @@
-<div class="jumbotron" keydown-collector ng-click="collectClick()"> <h3>BPM</h3> <p class="bpm">{{bpm}}</p> <p class="lead"> Tap <kbd ng-class="downed">J</kbd> key or <span ng-class="clicked">this gray area</span> </p> </div>
+<div class="jumbotron" keydown-collector ng-click="collectClick()"> <h3>BPM</h3> <p class="bpm">{{bpm}}</p> <p class="lead"> Tap <kbd lightning="keydown" ng-class="{downed: targetSource === 'keydown' }">J</kbd> key or <span lightning="click" ng-class="{clicked: targetSource === 'click' }">this gray area</span> </p> </div>
