@@ -30,22 +30,9 @@ angular
           return kvp.observable;
         });
 
-        var source = rx.Observable.merge(sources)
-                    .timeInterval()
-                    .skip(1)
-                    .pluck('interval')
-                    .where(function (i) {
-                      return i <= 10000;
-                    });
-
-        return source.windowWithCount(8, 1)
-              .merge(source.windowWithCount(4, 1).take(7))
-              .selectMany(function (x) {
-                return x.average();
-              })
-              .map(function (duration) {
-                return Math.round(60000 / duration);
-              });
+        return rx.Observable
+          .merge(sources)
+          .bpm(4);
 
       }
     };
